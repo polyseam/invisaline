@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "invisaline.helloWorld",
-        "title": "Hello World"
+        "command": "invisaline.enable",
+        "title": "Enable Invisaline: (indent template strings visually)"
       }
     ]
   },

@@ -1,15 +1,29 @@
 import * as assert from 'assert';
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
+import { activate, deactivate } from '../../src/extension';
 
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+suite('invisaline Extension Test Suite', () => {
+  test('activate and deactivate exports exist', () => {
+    assert.strictEqual(typeof activate, 'function');
+    assert.strictEqual(typeof deactivate, 'function');
+  });
 
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
-	});
+  test('activate registers some subscriptions without throwing', () => {
+    const context = { subscriptions: [] } as unknown as vscode.ExtensionContext;
+    assert.doesNotThrow(() => activate(context), 'activate should not throw');
+    assert.ok(
+      context.subscriptions.length > 0,
+      'activate should register at least one subscription'
+    );
+  });
+
+  test('deactivate does not throw', () => {
+    assert.doesNotThrow(() => deactivate(), 'deactivate should not throw');
+  });
+
+  test('default extraPad setting is 2', () => {
+    const config = vscode.workspace.getConfiguration('invisaline');
+    const extraPad = config.get<number>('extraPad');
+    assert.strictEqual(extraPad, 2, 'extraPad should default to 2');
+  });
 });
