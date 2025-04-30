@@ -37,7 +37,7 @@ consistent. This is purely a visual change and does not modify the source file.
 ```ts
 function greet(name: string) {
    const message = `Hello, ${name}!
-     Welcome to invisaline.`; // this code is visually indented, but will contain no extra spaces
+     Welcome to invisaline.`; // this code is visually indented, but contains no extra spaces
 }
 ```
 
