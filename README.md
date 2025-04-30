@@ -5,7 +5,7 @@ template literals to match their surrounding code indentation—without changing
 your source file.
 
 > [!IMPORTANT]
-> legally distinct and unrelated to the mouth technology "invisalign"
+> legally distinct from and unrelated to the mouth technology "invisalign"
 
 ## Installation
 
