@@ -41,10 +41,17 @@ function greet(name: string) {
 }
 ```
 
-
 ## Usage
 
-Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Enable Visual Template String Indentation` to enable the extension, or `Invisaline: Disable Visual Template String Indentation` to disable it. Both commands change the setting `invisaline.enabled`.
+The extension will automatically activate when you open a JavaScript or TypeScript file so long as `invisaline.enabled` is set to `true` globally or in the current workspace.
+
+### Enable the extension
+
+Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Enable Visual Template String Indentation` then select whether you want it enabled for all workspaces or just the current one.
+
+### Disable the extension
+
+Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Disable Visual Template String Indentation` then select whether you want it disabled for all workspaces or just the current one.
 
 ## Development
 
