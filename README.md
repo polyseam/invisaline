@@ -22,7 +22,7 @@ appears messy.
 
 ```ts
 function greet(name: string) {
-   const message = `Hello, ${name}!
+  const message = `Hello, ${name}!
 Welcome to invisaline.
   `;
 }
@@ -36,15 +36,15 @@ consistent. This is purely a visual change and does not modify the source file.
 
 ```ts
 function greet(name: string) {
-   const message = `Hello, ${name}!
+  const message = `Hello, ${name}!
      Welcome to invisaline.`; // this code is visually indented, but contains no extra spaces
 }
 ```
 
-> [!TIP]
-> Invisaline works even better when coupled with a
-> [indent-rainbow](https://marketplace.visualstudio.com/items/?itemName=oderwat.indent-rainbow)
-> which makes it easy to see real whitespace.
+
+## Usage
+
+Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Enable Visual Template String Indentation` to enable the extension, or `Invisaline: Disable Visual Template String Indentation` to disable it. Both commands change the setting `invisaline.enabled`.
 
 ## Development
 
