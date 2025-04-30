@@ -7,23 +7,12 @@ your source file.
 > [!IMPORTANT]
 > legally distinct from and unrelated to the mouth technology "invisalign"
 
-> [!WARNING]
-> this extension is in early development and may not work (whatsoever)
-
 ## Installation
 
 ### From the Marketplace
 
 1. Open the Extensions view in VS Code (`Ctrl+Shift+X` / `Cmd+Shift+X`).
 2. Search for **invisaline** and click **Install**.
-
-### Manual (VSIX)
-
-1. Download the latest `.vsix` from the releases page.
-2. Install it with:
-   ```bash
-   code --install-extension invisaline-<version>.vsix
-   ```
 
 ## Usage
 
@@ -32,44 +21,28 @@ literal nested within indented code. For example:
 
 ```ts
 function greet(name: string) {
-    const message = `
-Hello, ${name}!
+   const message = `Hello, ${name}!
 Welcome to invisaline.
   `;
 }
 ```
 
 The lines inside the backticks will appear visually aligned under
-`const message =`, preserving zero-indentation on disk.
+`const message =`, preserving zero-indentation in your source file.
 
 ```ts
 function greet(name: string) {
-    const message = `
-      Hello, ${name}!
-      Welcome to invisaline.
+   const message = `Hello, ${name}!
+     Welcome to invisaline.
   `; // this code is visually indented, but contains no extra spaces
 }
 ```
-
-## Configuration
-
-You can adjust the extra padding added before each line of the template literal
-via your Settings (`settings.json`):
-
-```jsonc
-{
-    // Number of additional spaces to pad before each template line (default: 2)
-    "invisaline.extraPad": 2
-}
-```
-
-Changes to this setting take effect immediately.
 
 ## Development
 
 1. **Clone** the repository and install dependencies:
    ```bash
-   git clone https://github.com/your-org/invisaline.git
+   git clone https://github.com/polyseam/invisaline.git
    cd invisaline
    npm install
    ```
@@ -78,7 +51,7 @@ Changes to this setting take effect immediately.
    npm run compile
    ```
 3. **Run** in the Extension Development Host:
-   - Press `F5` in VS Code to launch a new window with the extension loaded.
+   - Click **Run and Debug** in the sidebar then select **Run Extension**.
 4. **Lint** and **Test**:
    ```bash
    npm run lint

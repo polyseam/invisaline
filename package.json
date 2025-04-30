@@ -2,7 +2,7 @@
   "name": "invisaline",
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": "https://github.com/polyseam/invisaline",
   "publisher": "polyseam",
   "engines": {
@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "invisaline.enable",
-        "title": "Enable Invisaline: (indent template strings visually)"
+        "title": "Invisaline: Enable Visual Template String Indentation"
       }
     ]
   },
