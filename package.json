@@ -2,7 +2,7 @@
   "name": "invisaline",
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.99.0"
   },
