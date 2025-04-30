@@ -1,7 +1,7 @@
 # invisaline
 
 A VS Code extension that visually aligns multi-line JavaScript and TypeScript
-template literals to match their surrounding code indentation—without changing
+template literals to match their surrounding code indentation — without changing
 your source file.
 
 > [!IMPORTANT]
@@ -14,10 +14,10 @@ your source file.
 1. Open the Extensions view in VS Code (`Ctrl+Shift+X` / `Cmd+Shift+X`).
 2. Search for **invisaline** and click **Install**.
 
-## Usage
+## The Problem
 
-Simply open any JavaScript or TypeScript file containing a multi-line template
-literal nested within indented code. For example:
+When writing multi-line template literals, the content is pushed all the way to
+the left margin of the editor, which can make it hard to read and appears messy.
 
 ```ts
 function greet(name: string) {
@@ -27,14 +27,16 @@ Welcome to invisaline.
 }
 ```
 
-The lines inside the backticks will appear visually aligned under
-`const message =`, preserving zero-indentation in your source file.
+## The Solution
+
+Invisaline automatically aligns the content of multi-line template literals with
+the surrounding code indentation, making it easier to read and visually
+consistent. This is purely a visual change and does not modify the source file.
 
 ```ts
 function greet(name: string) {
    const message = `Hello, ${name}!
-     Welcome to invisaline.
-  `; // this code is visually indented, but contains no extra spaces
+     Welcome to invisaline.`; // this code is visually indented, but will contain no extra spaces
 }
 ```
 
