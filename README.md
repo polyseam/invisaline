@@ -1,20 +1,18 @@
 # invisaline
 
-A VS Code extension that visually aligns multi-line JavaScript and TypeScript template literals to match their surrounding code indentation—without changing your source file.
-
-## Features
-
-- **Visual indentation** of multi-line template literals (plain and tagged) in JavaScript, TypeScript, JSX, and TSX files.
-- **Configurable extra padding** before each line via the `invisaline.extraPad` setting (default: `2`).
-- **Live updates** while editing and viewing—decorations are applied in real time.
+A VS Code extension that visually aligns multi-line JavaScript and TypeScript
+template literals to match their surrounding code indentation—without changing
+your source file.
 
 ## Installation
 
 ### From the Marketplace
+
 1. Open the Extensions view in VS Code (`Ctrl+Shift+X` / `Cmd+Shift+X`).
 2. Search for **invisaline** and click **Install**.
 
 ### Manual (VSIX)
+
 1. Download the latest `.vsix` from the releases page.
 2. Install it with:
    ```bash
@@ -23,22 +21,24 @@ A VS Code extension that visually aligns multi-line JavaScript and TypeScript te
 
 ## Usage
 
-Simply open any JavaScript or TypeScript file containing a multi-line template literal nested within indented code. For example:
+Simply open any JavaScript or TypeScript file containing a multi-line template
+literal nested within indented code. For example:
 
 ```ts
 function greet(name: string) {
-  const message = `
+    const message = `
 Hello, ${name}!
 Welcome to invisaline.
   `;
 }
 ```
 
-The lines inside the backticks will appear visually aligned under `const message =`, preserving zero-indentation on disk.
+The lines inside the backticks will appear visually aligned under
+`const message =`, preserving zero-indentation on disk.
 
 ```ts
 function greet(name: string) {
-  const message = `
+    const message = `
     Hello, ${name}!
     Welcome to invisaline.
   `; // this code is visually indented, but contains no extra spaces
@@ -47,12 +47,13 @@ function greet(name: string) {
 
 ## Configuration
 
-You can adjust the extra padding added before each line of the template literal via your Settings (`settings.json`):
+You can adjust the extra padding added before each line of the template literal
+via your Settings (`settings.json`):
 
 ```jsonc
 {
-  // Number of additional spaces to pad before each template line (default: 2)
-  "invisaline.extraPad": 2
+    // Number of additional spaces to pad before each template line (default: 2)
+    "invisaline.extraPad": 2
 }
 ```
 
@@ -80,7 +81,8 @@ Changes to this setting take effect immediately.
 
 ## Contributing
 
-Contributions and feedback are welcome! Please open issues or pull requests on GitHub to suggest new features or report bugs.
+Contributions and feedback are welcome! Please open issues or pull requests on
+GitHub to suggest new features or report bugs.
 
 ## License
 
