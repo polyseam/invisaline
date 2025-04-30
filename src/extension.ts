@@ -20,58 +20,61 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable);
+
+  // Create a decoration type for visual indent padding
+  const indentDecorationType = vscode.window.createTextEditorDecorationType({});
+  context.subscriptions.push(indentDecorationType);
+
+  // Function to update template literal indent decorations
+  function updateDecorations(editor: vscode.TextEditor | undefined) {
+    if (!editor) {
+      return;
+    }
+    // Only apply to JS/TS files
+    if (!['javascript','javascriptreact','typescript','typescriptreact'].includes(editor.document.languageId)) {
+      return;
+    }
+    const text = editor.document.getText();
+    const decorations: vscode.DecorationOptions[] = [];
+    // Match all template literals (multi-line aware)
+    const templateRegex = /`([\s\S]*?)`/g;
+    let match: RegExpExecArray | null;
+    while ((match = templateRegex.exec(text))) {
+      const start = editor.document.positionAt(match.index);
+      const end = editor.document.positionAt(match.index + match[0].length);
+      if (start.line < end.line) {
+        const parentIndent = editor.document.lineAt(start.line).firstNonWhitespaceCharacterIndex;
+        for (let ln = start.line + 1; ln <= end.line; ln++) {
+          const lineText = editor.document.lineAt(ln).text;
+          const actualIndent = lineText.search(/\S|$/);
+          const padCount = Math.max(0, parentIndent - actualIndent);
+          if (padCount > 0) {
+            const padStr = '\u00A0'.repeat(padCount);
+            const range = new vscode.Range(ln, actualIndent, ln, actualIndent + 1);
+            decorations.push({ range, renderOptions: { before: { contentText: padStr } } });
+          }
+        }
+      }
+    }
+    editor.setDecorations(indentDecorationType, decorations);
+  }
+
+  // Initial decoration pass
+  updateDecorations(vscode.window.activeTextEditor);
+  // Reapply on editor switch
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor(editor => updateDecorations(editor))
+  );
+  // Reapply on document edits
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeTextDocument(event => {
+      if (vscode.window.activeTextEditor && event.document === vscode.window.activeTextEditor.document) {
+        updateDecorations(vscode.window.activeTextEditor);
+      }
+    })
+  );
 }
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
-
-// In extension activation:
-let indentDecorationType = vscode.window.createTextEditorDecorationType({});
-
-function updateDecorations(editor: vscode.TextEditor) {
-  const text = editor.document.getText();
-  const decorations: vscode.DecorationOptions[] = [];
-  
-  // Example: find simple template literals with regex (for real use, a JS parser is better)
-  const templateRegex = /`([^]*?)`/g;
-  let match: RegExpExecArray | null;
-  while ((match = templateRegex.exec(text))) {
-    const start = editor.document.positionAt(match.index);
-    const end = editor.document.positionAt(match.index + match[0].length);
-    if (start.line < end.line) {
-      // Multi-line template found
-      // Compute indent of start line
-      const startLineText = editor.document.lineAt(start.line).text;
-      const parentIndent = startLineText.search(/\S|$/);
-      // Process each line of content inside the template
-      for (let ln = start.line+1; ln <= end.line; ln++) {
-        const lineText = editor.document.lineAt(ln).text;
-        const actualIndent = lineText.search(/\S|$/);
-        const padCount = Math.max(0, parentIndent - actualIndent);
-        if (padCount > 0) {
-          const padStr = '\u00A0'.repeat(padCount);
-          // Attach decoration at the first character (range must be non-empty)
-          const range = new vscode.Range(ln, actualIndent, ln, actualIndent+1);
-          decorations.push({
-            range,
-            renderOptions: {
-              before: { contentText: padStr }
-            }
-          });
-        }
-      }
-    }
-  }
-  editor.setDecorations(indentDecorationType, decorations);
-}
-
-// Hook into active editor changes and content changes
-vscode.window.onDidChangeActiveTextEditor(e => {
-  if (e) {updateDecorations(e);};
-});
-
-vscode.workspace.onDidChangeTextDocument(e => {
-  if (vscode.window.activeTextEditor && e.document === vscode.window.activeTextEditor.document) {
-    updateDecorations(vscode.window.activeTextEditor);
-  }
-});
