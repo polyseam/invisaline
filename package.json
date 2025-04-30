@@ -3,6 +3,7 @@
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
   "version": "0.1.0",
+  "repository": "https://github.com/polyseam/invisaline",
   "engines": {
     "vscode": "^1.99.0"
   },
