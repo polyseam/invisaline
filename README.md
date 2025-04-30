@@ -39,8 +39,8 @@ The lines inside the backticks will appear visually aligned under
 ```ts
 function greet(name: string) {
     const message = `
-    Hello, ${name}!
-    Welcome to invisaline.
+      Hello, ${name}!
+      Welcome to invisaline.
   `; // this code is visually indented, but contains no extra spaces
 }
 ```
