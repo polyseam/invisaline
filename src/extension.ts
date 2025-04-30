@@ -13,7 +13,20 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('invisaline.enable', async () => {
       const config = vscode.workspace.getConfiguration('invisaline');
-      await config.update('enabled', true, vscode.ConfigurationTarget.Workspace);
+      const pick = await vscode.window.showQuickPick(
+        [
+          { label: 'Global', description: 'User settings' },
+          { label: 'Workspace', description: 'This workspace' }
+        ],
+        {
+          placeHolder: 'Apply Invisaline setting to:',
+          ignoreFocusOut: true
+        }
+      );
+      const target = pick?.label === 'Workspace'
+        ? vscode.ConfigurationTarget.Workspace
+        : vscode.ConfigurationTarget.Global;
+      await config.update('enabled', true, target);
       updateDecorations(vscode.window.activeTextEditor);
       vscode.window.showInformationMessage('Invisaline indentation enabled.');
     })
@@ -21,7 +34,20 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('invisaline.disable', async () => {
       const config = vscode.workspace.getConfiguration('invisaline');
-      await config.update('enabled', false, vscode.ConfigurationTarget.Workspace);
+      const pick = await vscode.window.showQuickPick(
+        [
+          { label: 'Global', description: 'User settings' },
+          { label: 'Workspace', description: 'This workspace' }
+        ],
+        {
+          placeHolder: 'Apply Invisaline setting to:',
+          ignoreFocusOut: true
+        }
+      );
+      const target = pick?.label === 'Workspace'
+        ? vscode.ConfigurationTarget.Workspace
+        : vscode.ConfigurationTarget.Global;
+      await config.update('enabled', false, target);
       updateDecorations(vscode.window.activeTextEditor);
       vscode.window.showInformationMessage('Invisaline indentation disabled.');
     })
