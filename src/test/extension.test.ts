@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { activate, deactivate } from '../../src/extension';
+import { activate, deactivate } from '../extension';
 
 suite('invisaline Extension Test Suite', () => {
   test('activate and deactivate exports exist', () => {
