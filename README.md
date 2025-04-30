@@ -84,4 +84,4 @@ Contributions and feedback are welcome! Please open issues or pull requests on G
 
 ## License
 
-[Apache 2.0](LICENSE)
+[Apache 2.0](https://github.com/polyseam/invisaline/blob/main/LICENSE)
