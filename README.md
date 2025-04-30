@@ -4,7 +4,7 @@ A VS Code extension that visually aligns multi-line JavaScript and TypeScript
 template literals to match their surrounding code indentation—without changing
 your source file.
 
->![IMPORTANT]
+> ![IMPORTANT]
 > legally distinct and unrelated to the mouth technology "invisalign"
 
 ## Installation
