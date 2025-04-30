@@ -1,0 +1,39 @@
+name: 📦 Release Extension
+
+on:
+  push:
+    # any tag starting with "v" (e.g. v1.2.3) will trigger a release
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out your code
+      - uses: actions/checkout@v3
+
+      # 2. Set up Node (to run vsce & your build)
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - uses: polyseam/tag-matches-version@v1
+        with:
+          file-path: package.json
+
+      # 3. Install dependencies
+      - run: npm ci
+
+      # 4. Compile your extension (outputs to out/)
+      - run: npm run compile
+
+      # 5. Publish to VS Code Marketplace
+      - name: Publish extension
+        env:
+          # You must add this secret in your repo settings:
+          # VSCE_TOKEN = your Personal Access Token with Marketplace publish rights
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+        run: |
+          npm install -g vsce
+          vsce publish --pat $VSCE_TOKEN
