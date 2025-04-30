@@ -88,9 +88,8 @@ export function activate(context: vscode.ExtensionContext) {
         const parentIndent =
           editor.document.lineAt(start.line).firstNonWhitespaceCharacterIndex;
         for (let ln = start.line + 1; ln <= end.line; ln++) {
-          const lineText = editor.document.lineAt(ln).text;
           const desiredIndent = parentIndent + 2;
-          // Always apply visual indent to template lines
+          // Always apply visual indent to template lines, beginning with 2 spaces
           const padStr = "\u00A0".repeat(desiredIndent);
           const range = new vscode.Range(ln, 0, ln, 0);
           decorations.push({
