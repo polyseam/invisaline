@@ -3,4 +3,4 @@ node_modules/
 out/
 !out/.gitkeep
 .env
-.vscode-test
+.vscode-test/
