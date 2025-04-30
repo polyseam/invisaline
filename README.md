@@ -36,6 +36,15 @@ Welcome to invisaline.
 
 The lines inside the backticks will appear visually aligned under `const message =`, preserving zero-indentation on disk.
 
+```ts
+function greet(name: string) {
+  const message = `
+    Hello, ${name}!
+    Welcome to invisaline.
+  `; // this code is visually indented, but contains no extra spaces
+}
+```
+
 ## Configuration
 
 You can adjust the extra padding added before each line of the template literal via your Settings (`settings.json`):
