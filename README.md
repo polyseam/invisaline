@@ -1,71 +1,78 @@
-# invisaline README
+# invisaline
 
-This is the README for your extension "invisaline". After writing up a brief description, we recommend including the following sections.
+A VS Code extension that visually aligns multi-line JavaScript and TypeScript template literals to match their surrounding code indentation—without changing your source file.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Visual indentation** of multi-line template literals (plain and tagged) in JavaScript, TypeScript, JSX, and TSX files.
+- **Configurable extra padding** before each line via the `invisaline.extraPad` setting (default: `2`).
+- **Live updates** while editing and viewing—decorations are applied in real time.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+### From the Marketplace
+1. Open the Extensions view in VS Code (`Ctrl+Shift+X` / `Cmd+Shift+X`).
+2. Search for **invisaline** and click **Install**.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Manual (VSIX)
+1. Download the latest `.vsix` from the releases page.
+2. Install it with:
+   ```bash
+   code --install-extension invisaline-<version>.vsix
+   ```
 
-## Requirements
+## Usage
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Simply open any JavaScript or TypeScript file containing a multi-line template literal nested within indented code. For example:
 
-## Extension Settings
+```ts
+function greet(name: string) {
+  const message = `
+Hello, ${name}!
+Welcome to invisaline.
+  `;
+}
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+The lines inside the backticks will appear visually aligned under `const message =`, preserving zero-indentation on disk.
 
-For example:
+## Configuration
 
-This extension contributes the following settings:
+You can adjust the extra padding added before each line of the template literal via your Settings (`settings.json`):
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```jsonc
+{
+  // Number of additional spaces to pad before each template line (default: 2)
+  "invisaline.extraPad": 2
+}
+```
 
-## Known Issues
+Changes to this setting take effect immediately.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Development
 
-## Release Notes
+1. **Clone** the repository and install dependencies:
+   ```bash
+   git clone https://github.com/your-org/invisaline.git
+   cd invisaline
+   npm install
+   ```
+2. **Compile** the TypeScript source:
+   ```bash
+   npm run compile
+   ```
+3. **Run** in the Extension Development Host:
+   - Press `F5` in VS Code to launch a new window with the extension loaded.
+4. **Lint** and **Test**:
+   ```bash
+   npm run lint
+   npm test
+   ```
 
-Users appreciate release notes as you update your extension.
+## Contributing
 
-### 1.0.0
+Contributions and feedback are welcome! Please open issues or pull requests on GitHub to suggest new features or report bugs.
 
-Initial release of ...
+## License
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[Apache 2.0](LICENSE)
