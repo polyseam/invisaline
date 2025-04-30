@@ -17,7 +17,8 @@ your source file.
 ## The Problem
 
 When writing multi-line template literals, the content is pushed all the way to
-the left margin of the editor, which can make it hard to read and appears messy.
+the left margin of the editor, which can make it hard to read and it just
+appears messy.
 
 ```ts
 function greet(name: string) {
@@ -30,7 +31,7 @@ Welcome to invisaline.
 ## The Solution
 
 Invisaline automatically aligns the content of multi-line template literals with
-the surrounding code indentation, making it easier to read and visually
+the surrounding code indentation, making it easier to read and more visually
 consistent. This is purely a visual change and does not modify the source file.
 
 ```ts
@@ -39,6 +40,11 @@ function greet(name: string) {
      Welcome to invisaline.`; // this code is visually indented, but will contain no extra spaces
 }
 ```
+
+> [!TIP]
+> Invisaline works even better when coupled with a
+> [indent-rainbow](https://marketplace.visualstudio.com/items/?itemName=oderwat.indent-rainbow)
+> which makes it easy to see real whitespace.
 
 ## Development
 
