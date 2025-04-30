@@ -7,6 +7,9 @@ your source file.
 > [!IMPORTANT]
 > legally distinct from and unrelated to the mouth technology "invisalign"
 
+> [!WARNING]
+> This extension is in early development and may not work (whatsoever)
+
 ## Installation
 
 ### From the Marketplace
