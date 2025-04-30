@@ -2,7 +2,7 @@
   "name": "invisaline",
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "repository": "https://github.com/polyseam/invisaline",
   "publisher": "polyseam",
   "engines": {
@@ -18,8 +18,24 @@
       {
         "command": "invisaline.enable",
         "title": "Invisaline: Enable Visual Template String Indentation"
+      },
+      {
+        "command": "invisaline.disable",
+        "title": "Invisaline: Disable Visual Template String Indentation"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Invisaline Settings",
+      "properties": {
+        "invisaline.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Invisaline indentation decorations. When disabled, visual indent decorations are turned off.",
+          "scope": "window"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

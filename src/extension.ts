@@ -9,20 +9,23 @@ export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('"invisaline" is now active!');
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  const disposable = vscode.commands.registerCommand(
-    "invisaline.enable",
-    () => {
-      // The code you place here will be executed every time your command is executed
-      // Display a message box to the user
-      vscode.window.showInformationMessage("invisaline enabled!");
-    },
+  // Register commands to toggle Invisaline
+  context.subscriptions.push(
+    vscode.commands.registerCommand('invisaline.enable', async () => {
+      const config = vscode.workspace.getConfiguration('invisaline');
+      await config.update('enabled', true, vscode.ConfigurationTarget.Workspace);
+      updateDecorations(vscode.window.activeTextEditor);
+      vscode.window.showInformationMessage('Invisaline indentation enabled.');
+    })
   );
-
-  context.subscriptions.push(disposable);
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(
+    vscode.commands.registerCommand('invisaline.disable', async () => {
+      const config = vscode.workspace.getConfiguration('invisaline');
+      await config.update('enabled', false, vscode.ConfigurationTarget.Workspace);
+      updateDecorations(vscode.window.activeTextEditor);
+      vscode.window.showInformationMessage('Invisaline indentation disabled.');
+    })
+  );
 
   // Create a decoration type for visual indent padding
   const indentDecorationType = vscode.window.createTextEditorDecorationType({});
@@ -31,6 +34,13 @@ export function activate(context: vscode.ExtensionContext) {
   // Function to update template literal indent decorations
   function updateDecorations(editor: vscode.TextEditor | undefined) {
     if (!editor) {
+      return;
+    }
+    // Respect the enabled setting: clear decorations and exit if disabled
+    const config = vscode.workspace.getConfiguration('invisaline', editor.document.uri);
+    const enabled = config.get<boolean>('enabled', true);
+    if (!enabled) {
+      editor.setDecorations(indentDecorationType, []);
       return;
     }
     // Only apply to JS/TS files
@@ -87,10 +97,11 @@ export function activate(context: vscode.ExtensionContext) {
     }),
   );
 
-  // Reapply decorations when the extraPad setting changes
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("invisaline.extraPad")) {
+      if (
+        e.affectsConfiguration('invisaline.enabled')
+      ) {
         updateDecorations(vscode.window.activeTextEditor);
       }
     }),
