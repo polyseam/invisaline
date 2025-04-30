@@ -33,7 +33,7 @@ jobs:
         env:
           # You must add this secret in your repo settings:
           # VSCE_TOKEN = your Personal Access Token with Marketplace publish rights
-          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+          VSCE_TOKEN: "${{ secrets.VSCE_TOKEN }}"
         run: |
           npm install -g vsce
           vsce publish --pat $VSCE_TOKEN
