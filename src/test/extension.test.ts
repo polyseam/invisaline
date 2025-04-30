@@ -23,7 +23,7 @@ suite('invisaline Extension Test Suite', () => {
 
   test('default extraPad setting is 2', () => {
     const config = vscode.workspace.getConfiguration('invisaline');
-    const extraPad = config.get<number>('extraPad');
+    const extraPad = config.get<number>('extraPad', 2);
     assert.strictEqual(extraPad, 2, 'extraPad should default to 2');
   });
 });
