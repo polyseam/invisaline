@@ -2,7 +2,7 @@
   "name": "invisaline",
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": "https://github.com/polyseam/invisaline",
   "publisher": "polyseam",
   "engines": {
@@ -11,7 +11,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
