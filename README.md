@@ -53,26 +53,6 @@ Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `I
 
 Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Disable Visual Template String Indentation` then select whether you want it disabled for all workspaces or just the current one.
 
-## Development
-
-1. **Clone** the repository and install dependencies:
-   ```bash
-   git clone https://github.com/polyseam/invisaline.git
-   cd invisaline
-   npm install
-   ```
-2. **Compile** the TypeScript source:
-   ```bash
-   npm run compile
-   ```
-3. **Run** in the Extension Development Host:
-   - Click **Run and Debug** in the sidebar then select **Run Extension**.
-4. **Lint** and **Test**:
-   ```bash
-   npm run lint
-   npm test
-   ```
-
 ## Contributing
 
 Contributions and feedback are welcome! Please open issues or pull requests on
