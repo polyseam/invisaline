@@ -1,6 +1,6 @@
 # invisaline
 
-[Invisaline](https://marketplace.visualstudio.com/items?itemName=Polyseam.invisaline)
+[invisaline](https://marketplace.visualstudio.com/items?itemName=Polyseam.invisaline)
 is a VS Code extension that visually aligns multi-line JavaScript and TypeScript
 template literals to match their surrounding code indentation — without changing
 your source file.
