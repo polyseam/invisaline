@@ -1,6 +1,7 @@
 # invisaline
 
-A VS Code extension that visually aligns multi-line JavaScript and TypeScript
+[Invisaline](https://marketplace.visualstudio.com/items?itemName=Polyseam.invisaline)
+is a VS Code extension that visually aligns multi-line JavaScript and TypeScript
 template literals to match their surrounding code indentation — without changing
 your source file.
 
@@ -43,15 +44,21 @@ function greet(name: string) {
 
 ## Usage
 
-The extension will automatically activate when you open a JavaScript or TypeScript file so long as `invisaline.enabled` is set to `true` globally or in the current workspace.
+The extension will automatically activate when you open a JavaScript or
+TypeScript file so long as `invisaline.enabled` is set to `true` globally or in
+the current workspace.
 
 ### Enable the extension
 
-Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Enable Visual Template String Indentation` then select whether you want it enabled for all workspaces or just the current one.
+Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command
+`Invisaline: Enable Visual Template String Indentation` then select whether you
+want it enabled for all workspaces or just the current one.
 
 ### Disable the extension
 
-Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command `Invisaline: Disable Visual Template String Indentation` then select whether you want it disabled for all workspaces or just the current one.
+Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command
+`Invisaline: Disable Visual Template String Indentation` then select whether you
+want it disabled for all workspaces or just the current one.
 
 ## Contributing
 
