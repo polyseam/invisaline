@@ -60,6 +60,13 @@ Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run the command
 `Invisaline: Disable Visual Template String Indentation` then select whether you
 want it disabled for all workspaces or just the current one.
 
+## Open-VSX
+
+The extension is also
+[available on Open-VSX](https://open-vsx.org/extension/polyseam/invisaline), a
+marketplace used by some non-Microsoft editors like
+[windsurf](https://windsurf.com/editor) that support the VSIX format.
+
 ## Contributing
 
 Contributions and feedback are welcome! Please open issues or pull requests on
