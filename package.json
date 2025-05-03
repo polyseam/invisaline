@@ -2,7 +2,7 @@
   "name": "invisaline",
   "displayName": "invisaline",
   "description": "visually indent ts and js template strings",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "repository": "https://github.com/polyseam/invisaline",
   "publisher": "polyseam",
   "engines": {

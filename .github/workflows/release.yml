@@ -29,11 +29,13 @@ jobs:
       - run: npm run compile
 
       # 5. Publish to VS Code Marketplace
-      - name: Publish extension
+      - name: Publish extension to VSCode Marketplace
         env:
           # You must add this secret in your repo settings:
           # VSCE_TOKEN = your Personal Access Token with Marketplace publish rights
           VSCE_TOKEN: "${{ secrets.VSCE_TOKEN }}"
-        run: |
-          npm install -g vsce
-          vsce publish --pat $VSCE_TOKEN
+        run: npx vsce publish --pat $VSCE_TOKEN
+      - name: Publish extension to OpenVSX
+        env:
+          OPENVSX_TOKEN: "${{ secrets.OPENVSX_TOKEN }}"
+        run: npx ovsx publish -p $OPENVSX_TOKEN
